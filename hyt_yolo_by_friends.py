@@ -74,3 +74,6 @@ for filename in os.listdir(image_folder):
 # 학습 데이터를 파일로 저장
 with open('training_data.pkl', 'wb') as f:
     pickle.dump(data, f)
+
+
+#12-4
