@@ -58,6 +58,6 @@ for filename in os.listdir(image_folder):
             # 추가로 필요한 예외 처리 코드를 작성할 수 있습니다.
 
 # 학습 데이터를 파일로 저장
-with open('C:\\Users\\poip8\\Desktop\\cherry_tomato.v2i.yolov5pytorch\\train\\training_data.pkl', 'wb') as f:
+with open('C:\\Users\\poip8\\Desktop\\cherry_tomato.v2i.yolov5pytorch\\train\\training_data.pt', 'wb') as f:
     pickle.dump(data, f)
     print("끝")

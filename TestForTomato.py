@@ -6,7 +6,7 @@ from pathlib import Path
 
 # yolov5 모델 로드
 # model = torch.hub.load('ultralytics/yolov5', 'custom', path_or_model=Path(r"C:\Users\poip8\Desktop\cherry_tomato.v2i.yolov5pytorch\train\training_data.pkl"))  # pkl 파일 경로로 모델 로드
-model_path = Path(r"C:\Users\poip8\Desktop\cherry_tomato.v2i.yolov5pytorch\train\training_data.pkl")
+model_path = Path(r"C:\Users\poip8\Desktop\cherry_tomato.v2i.yolov5pytorch\train\training_data.pt")
 model = torch.load(model_path)
 
 # 리얼센스 카메라 설정
