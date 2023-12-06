@@ -5,8 +5,8 @@ import numpy as np
 import pickle
 
 # 라벨과 이미지가 저장된 폴더 여기엔 폴더 위치로 바꿔주기
-label_folder = 'C:/data/labels/' 
-image_folder = 'C:/data/images/'
+label_folder = r'C:\Users\poip8\Desktop\cherry_tomato.v2i.yolov5pytorch\train\labels' 
+image_folder = r'C:\Users\poip8\Desktop\cherry_tomato.v2i.yolov5pytorch\train\images'
 
 # 학습 데이터를 저장할 리스트
 data = []
