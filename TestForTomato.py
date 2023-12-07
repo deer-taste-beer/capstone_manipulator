@@ -3,11 +3,14 @@ import torch
 import cv2
 import numpy as np
 from pathlib import Path
+import sys
 
-# yolov5 모델 로드
-# model = torch.hub.load('ultralytics/yolov5', 'custom', path_or_model=Path(r"C:\Users\poip8\Desktop\cherry_tomato.v2i.yolov5pytorch\train\training_data.pkl"))  # pkl 파일 경로로 모델 로드
-model_path = Path(r"C:\Users\poip8\Desktop\cherry_tomato.v2i.yolov5pytorch\train\training_data.pt")
-model = torch.load(model_path)
+# yolov5 패키지 파일 위치 추가
+sys.path.append(r'C:\Users\ajw1\Desktop\yolov5')
+
+# YOLOv5 모델 로드
+model_path = Path(r'C:\Users\ajw1\Desktop\yolov5\runs\train\exp\weights\best.pt')
+model = torch.load(model_path)['model'].to(torch.float32)  # 모델은 'model' 키에 저장되어 있음
 
 # 리얼센스 카메라 설정
 pipeline = rs.pipeline()
@@ -26,13 +29,17 @@ try:
         if not color_frame:
             continue
 
-        # 카메라 프레임을 OpenCV 포맷으로 변환
+        # 카메라 프레임을 OpenCV 포맷으로 변환하고, 입력 데이터의 타입을 변경
         color_image = np.asanyarray(color_frame.get_data())
+        color_image_tensor = torch.from_numpy(color_image).to(dtype=torch.float32).permute(2, 0, 1).unsqueeze(0) / 255.0
 
-        results = model(color_image)  # 모델에 프레임 전달하여 객체 감지
-        detections = results.pandas().xyxy[0]  # 감지된 객체 정보 가져오기
+        # 모델에 프레임 전달하여 객체 감지
+        with torch.no_grad():
+            results = model(color_image_tensor)  # 모델에 프레임 전달하여 객체 감지
 
-        for _, det in detections.iterrows():
+        detections = results[0]  # 모델 출력에서 객체 감지 정보 가져오기
+
+        for det in detections:
             # 각 객체의 정보 (클래스, confidence, 좌표 등) 출력
             print(det)
 
