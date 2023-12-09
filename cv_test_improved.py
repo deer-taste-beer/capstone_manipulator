@@ -4,9 +4,9 @@ import os
 import shutil
 
 # 원본 이미지가 있는 경로
-source_dir = '/root/tomato'
+source_dir = r'C:\Users\poip8\Desktop\069.시설_작물_개체_영상\01.데이터\1.Training\원천데이터\토마토(방울)\토마토1'
 # 복사할 이미지가 있는 경로
-destination_dir = '/root/tomato/toto'
+destination_dir = r'C:\Users\poip8\Desktop\tomato_red'
 
 # 경로 내의 모든 파일 확인
 file_list = os.listdir(source_dir)

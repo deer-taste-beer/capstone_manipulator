@@ -6,10 +6,10 @@ from pathlib import Path
 import sys
 
 # yolov5 패키지 파일 위치 추가
-sys.path.append(r'C:\Users\ajw1\Desktop\yolov5')
+sys.path.append(r'C:\Users\poip8\Desktop\yolov5')
 
 # YOLOv5 모델 로드
-model_path = Path(r'C:\Users\ajw1\Desktop\yolov5\runs\train\exp\weights\best.pt')
+model_path = Path(r'C:\Users\poip8\Desktop\yolov5\runs\train\exp7\weights\best.pt')
 model = torch.load(model_path)['model'].to(torch.float32)  # 모델은 'model' 키에 저장되어 있음
 
 # 리얼센스 카메라 설정
